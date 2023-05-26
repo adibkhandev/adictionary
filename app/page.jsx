@@ -58,8 +58,8 @@ export default function Home() {
    return (
        <>
        {loaded?(
-           <div className="dictionary-cont relative w-screen h-screen overflow-scroll lg:overflow-hidden ">
-                     <div className="absolute z-5 top-0 w-screen h-screen">
+           <div className={`dictionary-cont relative w-screen h-screen overflow-scroll lg:overflow-hidden `}>
+                     <div className={`absolute z-10 top-0 w-screen ${animate>=1?"h-min":"h-screen"}`}>
                      <div 
                        onTransitionEnd={()=> {
                          if(animate==1){
@@ -146,80 +146,82 @@ export default function Home() {
 
 
             
-             
-              <div
-              onAnimationEnd={()=> { 
-                
-                if(animate==1){
-                 setAnimate(0)
-                }
-              }
-
-              }
-              className= {` pb-8 px-4 mt-40 w-screen ${animate!=2?"result-gone":"result-there"} `}
-              >    
-                   <div className="header ml-14 my-6 ">
-                     <h1 className=" mb-2 font-bitterBlack text-7xl" >{wordData.word}</h1>
-                     <div className="phonetics flex items-center">
-                        <h1 className="font-bitterMedium" >{wordData.phonetic}</h1>
-                        {wordData.audio?(
-                        <button
-                            
-                          onClick={()=>{
-                          if(wordData && wordData.audio){
-                            let audio = new Audio(wordData.audio)
-                            audio.play()
-                          }
-                        }}>
-                           <img className="ml-2 h-3" src="play.png" alt=""/>
-                        </button>
-                        ):''}
-                     </div>
-                   </div>
-                     
-                   <div className="meanings-cont results-cont">
-                       {response && (response.length!=0)?(
-                          response.map((res)=>{
-                           return(
-                            
-                            <div className="h-min max-w-3xl drop-shadow-2xl bg-gray-200 mx-12 p-4 rounded-lg">
-                              <div className="font-bitterBold text-xs">
-                                
-                                <h1 className="w-min mb-2  px-2 py-1 bg-slate-50 rounded drop-shadow-md">
-                                 {res.partOfSpeech}
-                                </h1>
-                                  
-                              </div>  
-                              {res.definitions.map((def)=>{
-                                return (
-                                  <div className="mb-2 ml-1" > 
-                                   <h1 className="font-bitterBold text-sm my-1">
-                                    {def.definition}
-                                   </h1>  
-                                   <h1 className="font-bitterLight text-sm">
-                                    {def.example}
-                                   </h1>   
-                                  </div> 
-                                )
-                              }
-
-                              )}   
-                            
-                            </div>
-                                      
-                           )
-                             
-                       })):(
-                       <div className={`notfound-cont drop-shadow-lg cont w-screen flex justify-center mt-52 font-bitterMedium text-lg ${animate>=1?"opacity-700":"opacity-0"}`}>
-                        <h1>No words found</h1>
-                       </div>
-                      )}
-                     
-                   </div>
+              <div className="absolute top-0 z-1">
+                  <div
+                  onAnimationEnd={()=> { 
                     
-                     
+                    if(animate==1){
+                     setAnimate(0)
+                    }
+                  }
 
-                </div>
+                  }
+                  className= {` pb-8 px-4 mt-40 w-screen ${animate!=2?"result-gone":"result-there"} `}
+                  >    
+                       <div className="header ml-14 my-6 ">
+                         <h1 className=" mb-2 font-bitterBlack text-7xl" >{wordData.word}</h1>
+                         <div className="phonetics flex items-center">
+                            <h1 className="font-bitterMedium" >{wordData.phonetic}</h1>
+                            {wordData.audio?(
+                            <button
+                                
+                              onClick={()=>{
+                              if(wordData && wordData.audio){
+                                let audio = new Audio(wordData.audio)
+                                audio.play()
+                              }
+                            }}>
+                               <img className="ml-2 h-3" src="play.png" alt=""/>
+                            </button>
+                            ):''}
+                         </div>
+                       </div>
+                         
+                       <div className="meanings-cont results-cont">
+                           {response && (response.length!=0)?(
+                              response.map((res)=>{
+                               return(
+                                
+                                <div className="h-min max-w-3xl drop-shadow-2xl bg-gray-200 mx-12 p-4 rounded-lg">
+                                  <div className="font-bitterBold text-xs">
+                                    
+                                    <h1 className="w-min mb-2  px-2 py-1 bg-slate-50 rounded drop-shadow-md">
+                                     {res.partOfSpeech}
+                                    </h1>
+                                      
+                                  </div>  
+                                  {res.definitions.map((def)=>{
+                                    return (
+                                      <div className="mb-2 ml-1" > 
+                                       <h1 className="font-bitterBold text-sm my-1">
+                                        {def.definition}
+                                       </h1>  
+                                       <h1 className="font-bitterLight text-sm">
+                                        {def.example}
+                                       </h1>   
+                                      </div> 
+                                    )
+                                  }
+
+                                  )}   
+                                
+                                </div>
+                                          
+                               )
+                                 
+                           })):(
+                           <div className={`notfound-cont drop-shadow-lg cont w-screen flex justify-center mt-52 font-bitterMedium text-lg ${animate>=1?"opacity-700":"opacity-0"}`}>
+                            <h1>No words found</h1>
+                           </div>
+                          )}
+                         
+                       </div>
+                        
+                         
+
+                    </div>
+                
+              </div>
 
             
             
