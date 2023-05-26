@@ -11,7 +11,7 @@ export default function Home() {
   let buttonRef = useRef(null)
   console.log(array,'arr')
   console.log(animate,'an')
-  let keyHandler = e => {
+  let keyHandler =(e)=> {
     console.log(e.key)
     if(event.key=='Enter'){
         buttonRef.current.click()
