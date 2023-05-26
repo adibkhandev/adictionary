@@ -1,7 +1,7 @@
 "use client"
 import {useState,useEffect,useRef} from 'react'
 import Image from 'next/image'
-import main from '../styles/main.module.scss'
+
 import axios from 'axios'
 export default function Home() {
   let [response,setResponse]=useState(null)
