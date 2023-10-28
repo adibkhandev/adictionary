@@ -79,7 +79,7 @@ export default function Home() {
                          }
                         }
                         onAnimationEnd={()=>setAnimate(2)}
-                        className="search-cta drop-shadow-md  flex justify-center items-center h-16 w-16 lg:w-20 lg:h-20 bg-white mr-4 rounded"
+                        className="search-cta drop-shadow-md  flex justify-center items-center h-14 w-14 xs:h-14 xs:w-14 lg:w-20 lg:h-20 bg-white mr-4 rounded"
                         ref={buttonRef}
                         >
                          <img className="w-1/4 opacity-40" src="search.svg" alt=""/>
@@ -92,7 +92,7 @@ export default function Home() {
                          }
                         }
                        }
-                       className=" pl-12 w:4/5 h-16  xs:pl-6 xs:w-2/3 lg:h-20 md:w-2/5 lg:text-md lg:pl-8 bg-white rounded drop-shadow-md text-xs"
+                       className=" pl-6 w-3/5 h-14 xs:w-3/5 xs:pl-6 xs:h-14 md:w-2/5 lg:h-20 lg:text-md lg:pl-8 bg-white rounded drop-shadow-md text-xs"
                        onChange={(e)=>{
                                 let url = `https://api.dictionaryapi.dev/api/v2/entries/en/${e.target.value}` 
                                 console.log(e.target.value,'ee')
